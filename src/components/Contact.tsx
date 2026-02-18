@@ -28,7 +28,9 @@ const Contact: React.FC = () => {
                   <Instagram size={20} />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.facebook.com/share/1E28U4jrx3/"
+                  target="_blank"
+                    rel="noopener noreferrer"
                   className="p-3 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-300"
                   aria-label="Facebook"
                 >
