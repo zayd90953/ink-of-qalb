@@ -1,6 +1,7 @@
 import React from 'react';
 import { Menu } from 'lucide-react';
 import { Logo } from './Logo';
+import {Link} from "react-router-dom";
 
 interface HeaderProps {
   scrolled: boolean;
@@ -14,13 +15,13 @@ const Header: React.FC<HeaderProps> = ({ scrolled, onOpenMenu }) => {
         scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent'
       }`}
     >
-      <a 
-        href="/"
+      <Link
+        to="/"
         className={`flex items-center gap-3 transition-opacity duration-500 focus:outline-none ${scrolled ? 'opacity-100' : 'opacity-0'}`}
       >
          <Logo className="w-6 h-6 text-white" />
          <span className="font-serif text-xl tracking-widest font-bold text-white uppercase">Ink Of Qalb</span>
-      </a>
+      </Link>
 
       <button 
         onClick={onOpenMenu}

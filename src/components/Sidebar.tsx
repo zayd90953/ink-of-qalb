@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -7,6 +8,8 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -16,13 +19,21 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
-  // Updated to use hash links
-  const navItems = [
-    { label: 'Home', href: '#/' },
-    { label: 'Collections', href: '#products' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Contact', href: '#contact' }
-  ];
+  const handleNav = (section?: string) => {
+    onClose();
+    navigate('/');
+
+    if (section) {
+      setTimeout(() => {
+        const el = document.getElementById(section);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <>
@@ -44,16 +55,23 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
           <div className="mt-20 flex flex-col space-y-8">
             <nav className="flex flex-col space-y-6 text-3xl md:text-4xl font-serif font-light tracking-wide">
-              {navItems.map((item) => (
-                <a 
-                  key={item.label}
-                  href={item.href} 
-                  onClick={onClose}
-                  className="text-left hover:pl-4 transition-all duration-300 hover:text-gray-300 text-white"
-                >
-                  {item.label}
-                </a>
-              ))}
+              
+              <button onClick={() => handleNav()} className="text-left hover:pl-4 transition-all duration-300 hover:text-gray-300 text-white">
+                Home
+              </button>
+
+              <button onClick={() => handleNav('products')} className="text-left hover:pl-4 transition-all duration-300 hover:text-gray-300 text-white">
+                Collections
+              </button>
+
+              <button onClick={() => handleNav('about')} className="text-left hover:pl-4 transition-all duration-300 hover:text-gray-300 text-white">
+                About Us
+              </button>
+
+              <button onClick={() => handleNav('contact')} className="text-left hover:pl-4 transition-all duration-300 hover:text-gray-300 text-white">
+                Contact
+              </button>
+
             </nav>
           </div>
 

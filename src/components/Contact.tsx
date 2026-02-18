@@ -14,7 +14,12 @@ const Contact: React.FC = () => {
             </p>
             
             <div className="space-y-4">
-              <a href="mailto:inkofqalb@gmail.com" className="flex items-center gap-4 text-xl font-serif hover:text-gray-600 transition-colors">
+              <a 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=inkofqalb@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 text-xl font-serif hover:text-gray-600 transition-colors"
+              >
                 <Mail size={24} />
                 <span>inkofqalb@gmail.com</span>
               </a>
@@ -41,17 +46,23 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="flex flex-col justify-end">
-            <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+            <form 
+              action="https://formspree.io/f/mdaldeoa"
+              method="POST"
+              className="space-y-8"
+            >
               <div className="relative border-b border-black/20 focus-within:border-black transition-colors">
                 <input 
-                  type="text" 
+                  type="text"
+                  name="name"
                   placeholder="Name" 
                   className="w-full bg-transparent py-4 text-xl outline-none placeholder:text-gray-400"
                 />
               </div>
               <div className="relative border-b border-black/20 focus-within:border-black transition-colors">
                 <input 
-                  type="email" 
+                  type="email"
+                  name="email" 
                   placeholder="Email" 
                   className="w-full bg-transparent py-4 text-xl outline-none placeholder:text-gray-400"
                 />
@@ -59,6 +70,7 @@ const Contact: React.FC = () => {
               <div className="relative border-b border-black/20 focus-within:border-black transition-colors">
                 <textarea 
                   rows={3}
+                  name="message"
                   placeholder="Message" 
                   className="w-full bg-transparent py-4 text-xl outline-none placeholder:text-gray-400 resize-none"
                 />
@@ -73,8 +85,8 @@ const Contact: React.FC = () => {
         <div className="mt-24 pt-8 border-t border-black/10 flex flex-col md:flex-row justify-between items-center text-xs uppercase tracking-widest text-gray-500">
           <p>© {new Date().getFullYear()} Ink Of Qalb.</p>
           <div className="flex gap-8 mt-4 md:mt-0">
-            <a href="#" className="hover:text-black">Privacy</a>
-            <a href="#" className="hover:text-black">Terms</a>
+            <a href="/privacy" className="hover:text-black">Privacy</a>
+            <a href="/terms" className="hover:text-black">Terms</a>
           </div>
         </div>
       </div>

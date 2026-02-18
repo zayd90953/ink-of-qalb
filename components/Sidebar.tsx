@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -19,10 +20,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Collections', href: '/#products' },
-    { label: 'About Us', href: '/#about' },
-    { label: 'Contact', href: '/#contact' }
+    { label: 'Home', to: '/' },
+    { label: 'Collections', to: '/#products' },
+    { label: 'About Us', to: '/#about' },
+    { label: 'Contact', to: '/#contact' }
   ];
 
   return (
@@ -46,14 +47,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <div className="mt-20 flex flex-col space-y-8">
             <nav className="flex flex-col space-y-6 text-3xl md:text-4xl font-serif font-light tracking-wide">
               {navItems.map((item) => (
-                <a 
+                <Link
                   key={item.label}
-                  href={item.href} 
+                  to={item.to} 
                   onClick={onClose}
                   className="text-left hover:pl-4 transition-all duration-300 hover:text-gray-300 text-white"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>

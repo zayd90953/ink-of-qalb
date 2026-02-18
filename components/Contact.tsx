@@ -30,7 +30,9 @@ const Contact: React.FC = () => {
                   <Instagram size={20} />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.facebook.com/share/1E28U4jrx3/"
+                  target="_blank"
+                  rel="noopener noreferrer" 
                   className="p-3 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-300"
                   aria-label="Facebook"
                 >
@@ -73,8 +75,8 @@ const Contact: React.FC = () => {
         <div className="mt-24 pt-8 border-t border-black/10 flex flex-col md:flex-row justify-between items-center text-xs uppercase tracking-widest text-gray-500">
           <p>© {new Date().getFullYear()} Ink Of Qalb.</p>
           <div className="flex gap-8 mt-4 md:mt-0">
-            <a href="#" className="hover:text-black">Privacy</a>
-            <a href="#" className="hover:text-black">Terms</a>
+            <a href="/privacy" className="hover:text-black">Privacy</a>
+            <a href="/terms" className="hover:text-black">Terms</a>
           </div>
         </div>
       </div>
