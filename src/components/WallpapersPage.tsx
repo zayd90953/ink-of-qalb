@@ -41,7 +41,7 @@ export default function WallpapersPage() {
       .catch((err) => console.error(err));
   }, []);
 
-  const categories = ["all", "palestine", "sudan", "nature", "islamic", "other"];
+  const categories = ["all", ...new Set(wallpapers.map(w => w.category))];
 
   const filteredWallpapers =
     activeCategory === "all"
@@ -120,6 +120,7 @@ export default function WallpapersPage() {
             No wallpapers found in this category.
           </div>
         )}
+
       </div>
     </div>
   );
