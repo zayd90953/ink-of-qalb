@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@sanity/client": "^7.15.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.454.0",
     "react": "^19.0.0",
