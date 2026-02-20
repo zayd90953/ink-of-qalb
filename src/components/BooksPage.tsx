@@ -8,90 +8,84 @@ type Book = {
   title: string;
   link: string;
   image: {
-    asset: {
-      url: string;
-    };
+    asset: { url: string };
+  };
+  category: {
+    title: string;
+    slug: { current: string };
   };
 };
 
 export default function BooksPage() {
   const [books, setBooks] = useState<Book[]>([]);
+  const [activeCategory, setActiveCategory] = useState("all");
 
   useEffect(() => {
     sanityClient
-      .fetch(
-        `*[_type == "book"]{
+      .fetch(`
+        *[_type == "book"]{
           _id,
           title,
           link,
           image{
-            asset->{
-              url
-            }
+            asset->{url}
+          },
+          category->{
+            title,
+            slug
           }
-        }`
-      )
-      .then((data) => {
-        console.log("BOOKS FROM SANITY:", data);
-        setBooks(data);
-      })
-      .catch((err) => console.error(err));
+        }
+      `)
+      .then((data) => setBooks(data))
+      .catch(console.error);
   }, []);
+
+  const categories = [
+    "all",
+    ...new Set(books.map((b) => b.category?.slug?.current)),
+  ];
+
+  const filteredBooks =
+    activeCategory === "all"
+      ? books
+      : books.filter(
+          (b) => b.category?.slug?.current === activeCategory
+        );
 
   return (
     <div className="min-h-screen bg-black pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
-
-        {/* Back button */}
-        <Link
-          to="/"
-          className="group inline-flex items-center gap-2 text-gray-400 hover:text-white mb-12 transition-colors"
-        >
-          <ArrowLeft size={18} />
-          <span className="uppercase tracking-widest text-xs">Back to Home</span>
+        <Link to="/" className="text-gray-400 hover:text-white mb-8 inline-flex gap-2">
+          <ArrowLeft size={18} /> Back
         </Link>
 
-        <h1 className="font-serif text-4xl md:text-6xl text-white mb-12 text-center">
-          Our Books
-        </h1>
+        <h1 className="text-white text-4xl mb-6">Books</h1>
 
-        {books.length === 0 && (
-          <div className="text-center text-gray-500 italic">
-            No books available yet.
-          </div>
-        )}
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {books.map((book) => (
-            <div
-              key={book._id}
-              className="border border-white/10 rounded-xl p-6 bg-white/5 flex flex-col items-center text-center"
+        <div className="flex gap-3 mb-10 flex-wrap">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-2 rounded-full text-xs uppercase
+                ${
+                  activeCategory === cat
+                    ? "bg-white text-black"
+                    : "border border-white/20 text-white"
+                }`}
             >
-              <div className="w-full aspect-[3/4] mb-6 overflow-hidden rounded-lg">
-                <img
-                  src={book.image.asset.url}
-                  alt={book.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-
-              <h2 className="font-serif text-xl text-white mb-3">
-                {book.title}
-              </h2>
-
-              <a
-                href={book.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 text-white font-serif"
-              >
-                <span>Get your copy</span>
-                <ExternalLink size={14} />
-              </a>
-            </div>
+              {cat}
+            </button>
           ))}
         </div>
 
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {filteredBooks.map((b) => (
+            <a key={b._id} href={b.link} target="_blank">
+              <img src={b.image.asset.url} alt={b.title} />
+              <p className="text-white mt-2">{b.title}</p>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );
