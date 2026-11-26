@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { sanityClient } from "../sanityClient";
+import OptimizedImage from './OptimizedImage';
 
 type Book = {
   _id: string;
@@ -80,8 +81,13 @@ export default function BooksPage() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {filteredBooks.map((b) => (
-            <a key={b._id} href={b.link} target="_blank">
-              <img src={b.image.asset.url} alt={b.title} />
+            <a key={b._id} href={b.link} target="_blank" rel="noopener noreferrer">
+              <OptimizedImage
+                src={b.image.asset.url}
+                alt={b.title}
+                width={600}
+                height={400}
+              />
               <p className="text-white mt-2">{b.title}</p>
             </a>
           ))}

@@ -11,8 +11,8 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ scrolled, onOpenMenu }) => {
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-30 transition-all duration-700 ease-in-out px-6 py-5 md:px-12 flex items-center justify-between ${
-        scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-30 transition-all duration-700 ease-in-out px-6 py-5 md:px-12 flex items-center justify-between bg-black/70 backdrop-blur-md border-b border-white/5 ${
+        scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5 py-4' : 'bg-black/70 backdrop-blur-md border-b border-white/5 py-4'
       }`}
     >
       {/* BRAND */}

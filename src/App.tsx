@@ -4,8 +4,11 @@ import NavigationWrapper from "./components/NavigationWrapper";
 import Home from "./components/Home";
 import BooksPage from "./components/BooksPage";
 import WallpapersPage from "./components/WallpapersPage";
+import Contact from "./components/Contact";
 import Privacy from "./components/Privacy";
 import Terms from "./components/Terms";
+import Cookies from "./components/Cookies";
+import RefundPolicy from "./components/RefundPolicy";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -23,13 +26,16 @@ const App: React.FC = () => {
       <NavigationWrapper />
       <ScrollToTop />
 
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/books" element={<BooksPage />} />
           <Route path="/wallpapers" element={<WallpapersPage />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/cookies" element={<Cookies />} />
+          <Route path="/refund" element={<RefundPolicy />} />
         </Routes>
       </main>
     </div>

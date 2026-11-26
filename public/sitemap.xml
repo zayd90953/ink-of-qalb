@@ -21,4 +21,23 @@
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://inkofqalb.vercel.app/privacy</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://inkofqalb.vercel.app/terms</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://inkofqalb.vercel.app/cookies</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://inkofqalb.vercel.app/refund</loc>
+    <priority>0.5</priority>
+  </url>
 </urlset>

@@ -18,12 +18,12 @@ const ProductGrid: React.FC = () => {
           {/* BOOKS */}
           <Link 
             to="/books"
-            className="group relative h-96 overflow-hidden rounded-2xl border border-white/10 bg-white/5 hover:border-white/30 transition-all duration-500 text-left block"
+            className="group relative h-96 overflow-hidden rounded-2xl border border-white/10 bg-black/5 hover:border-white/30 transition-all duration-500 text-left block"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
             <div className="absolute inset-0 p-10 flex flex-col justify-between z-10">
               <BookOpen className="w-12 h-12 text-white/80 group-hover:scale-110 transition-transform duration-500" />
-              <div>
+              <div className="relative text-white">
                 <h3 className="text-3xl font-serif text-white mb-3">Dua & Reflections</h3>
                 <p className="text-gray-400 font-sans text-sm tracking-wide mb-6 max-w-xs">
                   Spiritual companions and guidebooks for your journey.
@@ -39,12 +39,12 @@ const ProductGrid: React.FC = () => {
           {/* WALLPAPERS */}
           <Link 
             to="/wallpapers"
-            className="group relative h-96 overflow-hidden rounded-2xl border border-white/10 bg-white/5 hover:border-white/30 transition-all duration-500 text-left block"
+            className="group relative h-96 overflow-hidden rounded-2xl border border-white/10 bg-black/5 hover:border-white/30 transition-all duration-500 text-left block"
           >
             <div className="absolute inset-0 bg-gradient-to-bl from-gray-900 via-black to-gray-900 opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
             <div className="absolute inset-0 p-10 flex flex-col justify-between z-10">
               <ImageIcon className="w-12 h-12 text-white/80 group-hover:scale-110 transition-transform duration-500" />
-              <div>
+              <div className="relative">
                 <h3 className="text-3xl font-serif text-white mb-3">Digital Wallpapers</h3>
                 <p className="text-gray-400 font-sans text-sm tracking-wide mb-6 max-w-xs">
                   High-resolution art pieces for your devices. Palestine, Sudan, Nature, and more.

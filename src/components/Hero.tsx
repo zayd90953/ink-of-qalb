@@ -24,11 +24,13 @@ const Hero: React.FC = () => {
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1764993659958-61a1956b8cac?q=80&w=1934&auto=format&fit=crop" 
+          src="/hero.png" 
           alt="Ink Of Qalb Hero Background" 
-          className="w-full h-full object-cover object-center opacity-60"
+          className="w-full h-full object-cover object-center"
+          loading="eager"
+          decoding="async"
         />
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/45"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20"></div>
       </div>
 
@@ -52,7 +54,7 @@ const Hero: React.FC = () => {
             animationStage >= 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
           }`}
         >
-          <Logo className="w-24 h-24 md:w-32 md:h-32 text-white/90 animate-pulse-slow" />
+          <Logo className="w-24 h-24 md:w-32 md:h-32 text-white/90 animate-shimmer" />
         </div>
 
         <div className={`absolute bottom-10 left-1/2 -translate-x-1/2 transition-opacity duration-1000 delay-1000 ${

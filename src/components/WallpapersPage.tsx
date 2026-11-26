@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { sanityClient } from "../sanityClient";
+import OptimizedImage from './OptimizedImage';
 
 type Wallpaper = {
   _id: string;
@@ -84,9 +85,15 @@ export default function WallpapersPage() {
               key={w._id}
               href={w.link}
               target="_blank"
+              rel="noopener noreferrer"
               className="block"
             >
-              <img src={w.image.asset.url} alt={w.title} />
+              <OptimizedImage
+                src={w.image.asset.url}
+                alt={w.title}
+                width={600}
+                height={400}
+              />
               <p className="text-white mt-2">{w.title}</p>
             </a>
           ))}
